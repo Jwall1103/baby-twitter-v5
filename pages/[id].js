@@ -1,10 +1,4 @@
-import {
-    collection,
-    doc,
-    onSnapshot,
-    orderBy,
-    query,
-  } from "@firebase/firestore";
+  import { collection, doc, onSnapshot, orderBy, query } from "@firebase/firestore";
   import { getProviders, getSession, useSession } from "next-auth/react";
   import { useRouter } from "next/router";
   import { useEffect, useState } from "react";
@@ -13,6 +7,7 @@ import {
   import Modal from "../components/Modal";
   import Sidebar from "../components/Sidebar";
   import Tweet from "../components/Tweet";
+  import Login from "../components/Login";
   import { db } from "../firebase";
   import { ArrowLeftIcon } from "@heroicons/react/24/solid";
   import Comment from "../components/Comment";
