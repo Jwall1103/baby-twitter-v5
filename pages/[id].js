@@ -47,7 +47,7 @@
       <div>
         <Head>
           <title>
-            {tweet?.userName} on Twitter: "{tweet?.text}"
+            {tweet?.userName} on Twitter: {tweet?.text}
           </title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
