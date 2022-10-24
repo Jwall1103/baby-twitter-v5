@@ -1,7 +1,5 @@
 import { useRef, useState } from "react";
 import { XMarkIcon, PhotoIcon, ChartBarIcon, FaceSmileIcon, CalendarIcon } from "@heroicons/react/24/outline";
-import "emoji-mart/css/emoji-mart.css";
-import { Picker } from "emoji-mart";
 import { db, storage } from "../firebase";
 import { addDoc, collection, doc, serverTimestamp, updateDoc } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
@@ -10,7 +8,6 @@ import { useSession } from "next-auth/react";
 function Input() {
     const [input, setInput] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
-    const [showEmojis, setShowEmojis] = useState(false);
     const [loading, setLoading] = useState(false);
     const filePickerRef = useRef(null);
     const { data: session } = useSession();
@@ -42,7 +39,6 @@ function Input() {
         setLoading(false);
         setInput("");
         setSelectedFile(null);
-        setShowEmojis(false);
     };
 
     const addImageToPost = (e) => {
@@ -54,14 +50,6 @@ function Input() {
         reader.onload = (readerEvent) => {
             setSelectedFile(readerEvent.target.result);
         };
-    };
-
-    const addEmoji = (e) => {
-        let sym = e.unified.split("-");
-        let codesArray = [];
-        sym.forEach((el) => codesArray.push("0x" + el));
-        let emoji = String.fromCodePoint(...codesArray);
-        setInput(input + emoji);
     };
 
   return (
@@ -107,26 +95,10 @@ function Input() {
                  <ChartBarIcon className="text-[#1d9bf0] h-[22px]"/>
              </div>
 
-             <div className="icon" onClick={() => setShowEmojis
-             (!showEmojis)}>
-                 <FaceSmileIcon className="text-[#1d9bf0] h-[22px]"/>
-             </div>
-
              <div className="icon">
                  <CalendarIcon className="text-[#1d9bf0] h-[22px]"/>
              </div>
 
-             {showEmojis && (
-                  <Picker 
-                     onSelect={addEmoji}
-                     style={{
-                     position: "absolute", marginTop: "465px",
-                     marginLeft: -40, maxWidth: "320px",
-                     borderRadius: "20px",
-                 }}
-                 theme="dark"
-                 />
-             )}
          </div>
          <button className="bg-[#1d9bf0] text-white rounded-full
          px-4 py-1.5 font-bold shadow-md hover:bg-[#1a8cd8]
