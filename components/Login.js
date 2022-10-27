@@ -1,6 +1,8 @@
+//imports
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 
+//login page with tailwind stylization
 function Login({providers}) {
   return (
     <div className="flex flex-col items-center space-y-20 pt-48">

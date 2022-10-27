@@ -1,6 +1,8 @@
+//imports
 import Moment from "react-moment";
 import { ChartBarIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalCircleIcon, HeartIcon, ShareIcon } from "@heroicons/react/24/outline";
 
+//comment component. send comments to "comment" index underneath tweets in firebase
 function Comment({ id, comment }) {
   return (
     <div className="p-3 flex cursor-pointer border-b

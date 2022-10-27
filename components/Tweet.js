@@ -1,3 +1,4 @@
+//imports
 import { collection, deleteDoc, doc, onSnapshot, orderBy, query, setDoc } from "@firebase/firestore";
 import { ChartBarIcon, ChatBubbleOvalLeftIcon, EllipsisHorizontalCircleIcon, HeartIcon, ShareIcon, ArrowPathRoundedSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as HeartIconFilled } from "@heroicons/react/24/solid";
@@ -9,6 +10,7 @@ import { useRecoilState } from "recoil";
 import { modalState, tweetIdState } from "../atoms/modalAtom";
 import { db } from "../firebase";
 
+//main tweet function. sends comments and likes to the DB. allows users to delete their own tweet
 function Tweet({ id, tweet, tweetPage }) {
     const { data: session } = useSession();
     const [isOpen, setIsOpen] = useRecoilState(modalState);

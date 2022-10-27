@@ -1,3 +1,4 @@
+//sidebar stylization
 function SidebarLink({Icon, text, active}) {
   return (
   <div

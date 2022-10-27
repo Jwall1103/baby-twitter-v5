@@ -1,3 +1,4 @@
+//imports
 import Head from 'next/head';
 import Sidebar from '../components/Sidebar';
 import Feed from '../components/Feed';
@@ -7,6 +8,7 @@ import Modal from '../components/Modal';
 import { modalState } from "../atoms/modalAtom";
 import { useRecoilState } from "recoil";
 
+//open home page
 export default function Home({trendingResults, followResults, providers }) {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(modalState);
@@ -31,7 +33,7 @@ if (!session) return <Login providers={providers} />;
   );
 }
 
-//needs work.
+ //needs work. wanted to implement a fake "trending" tab but ran out of time
 export async function getServerSideProps(context) {
   const trendingResults = await fetch("https://api.npoint.io/f12291e59c8442b9027a").then(
     (res) => res.json()

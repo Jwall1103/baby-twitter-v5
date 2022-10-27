@@ -1,3 +1,4 @@
+  //imports
   import { collection, doc, onSnapshot, orderBy, query } from "@firebase/firestore";
   import { getProviders, getSession, useSession } from "next-auth/react";
   import { useRouter } from "next/router";
@@ -13,6 +14,7 @@
   import Comment from "../components/Comment";
   import Head from "next/head";
   
+  //create page for each tweet when it's clicked on
   function TweetPage({ trendingResults, followResults, providers }) {
     const { data: session } = useSession();
     const [isOpen, setIsOpen] = useRecoilState(modalState);
@@ -21,6 +23,7 @@
     const router = useRouter();
     const { id } = router.query;
   
+    //pull up tweet
     useEffect(
       () =>
         onSnapshot(doc(db, "tweets", id), (snapshot) => {
@@ -29,6 +32,7 @@
       [db]
     );
   
+    //pull up comments
     useEffect(
       () =>
         onSnapshot(
@@ -41,6 +45,7 @@
       [db, id]
     );
   
+    //user login
     if (!session) return <Login providers={providers} />;
   
     return (
@@ -63,7 +68,7 @@
               </div>
               Tweet
             </div>
-  
+          
             <Tweet id={id} tweet={tweet} tweetPage />
             {comments.length > 0 && (
               <div className="pb-72">
@@ -90,7 +95,7 @@
   
   export default TweetPage;
   
- //needs work.
+ //needs work. wanted to implement a fake "trending" tab but ran out of time
 export async function getServerSideProps(context) {
     const trendingResults = await fetch("https://api.npoint.io/f12291e59c8442b9027a").then(
       (res) => res.json()

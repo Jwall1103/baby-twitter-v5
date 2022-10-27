@@ -1,3 +1,4 @@
+//imports
 import { SparklesIcon } from "@heroicons/react/24/outline";
 import { useEffect, useState } from "react";
 import Input from "./Input";
@@ -7,7 +8,7 @@ import Tweet from "./Tweet";
 import { useSession } from "next-auth/react";
 import postcss from "postcss";
 
-
+//main feed component. pulls tweets by ID and orders them from new to old
 function Feed() {
   const [tweets, setTweets] = useState([]);
 

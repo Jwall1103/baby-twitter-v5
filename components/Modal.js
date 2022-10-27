@@ -1,3 +1,4 @@
+//imports
 import { useRecoilState } from "recoil";
 import { modalState, tweetIdState } from "../atoms/modalAtom";
 import { Dialog, Transition } from "@headlessui/react";
@@ -9,6 +10,7 @@ import { XMarkIcon, PhotoIcon, ChartBarIcon, FaceSmileIcon, CalendarIcon } from 
 import { useRouter } from "next/router";
 import Moment from "react-moment";
 
+//pulls up individual tweets that the user clicks on. allows for comments and replies
 function Modal() {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(modalState);

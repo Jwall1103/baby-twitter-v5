@@ -1,3 +1,4 @@
+//imports
 import { useRef, useState } from "react";
 import { XMarkIcon, PhotoIcon, ChartBarIcon, FaceSmileIcon, CalendarIcon } from "@heroicons/react/24/outline";
 import { db, storage } from "../firebase";
@@ -5,6 +6,7 @@ import { addDoc, collection, doc, serverTimestamp, updateDoc } from "@firebase/f
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { useSession } from "next-auth/react";
 
+//allow user to post tweets. send input to the database
 function Input() {
     const [input, setInput] = useState("");
     const [selectedFile, setSelectedFile] = useState(null);
@@ -40,7 +42,7 @@ function Input() {
         setInput("");
         setSelectedFile(null);
     };
-
+    //pull up file reader if user wants to post an image
     const addImageToPost = (e) => {
         const reader = new FileReader();
         if (e.target.files[0]) {
@@ -64,7 +66,7 @@ function Input() {
                 <textarea value={input}
                 onChange={(e) => setInput(e.target.value)}
                 rows="2"
-                placeholder="Insert silly tweet here."
+                placeholder="What's on your mind?"
                 className="bg-transparent outline-none text-[#d9d9d9]
                 text-lg placeholder-gray-500 tracking-wide w-full
                 min-h-[50px]"

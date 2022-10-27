@@ -1,19 +1,12 @@
+//imports
 import Image from "next/image";
 import SidebarLink from "./SidebarLink";
 import { HomeIcon } from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
-import { 
-    HashtagIcon,
-    BellIcon,
-    InboxIcon,
-    BookmarkIcon,
-    ClipboardDocumentListIcon,
-    UserIcon,
-    EllipsisHorizontalCircleIcon,
-    Bars3Icon,
-} from "@heroicons/react/24/outline";
+import { HashtagIcon, BellIcon, InboxIcon, BookmarkIcon, ClipboardDocumentListIcon, UserIcon, EllipsisHorizontalCircleIcon, Bars3Icon } from "@heroicons/react/24/outline";
 import { signOut, useSession } from "next-auth/react";
 
+//displays sidebar. mostly cosmetic, but clicking user signs them out
 function Sidebar() {
   const { data: session } = useSession();
   const router = useRouter();
